@@ -18,7 +18,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'rails_12factor', group: :production
 gem 'pg', group: :production
 gem 'carrierwave'
-gem "fog-aws"
+gem 'fog-aws', group: :production
 gem 'figaro'
 
 group :development, :test do
