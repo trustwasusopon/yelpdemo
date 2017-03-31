@@ -323,6 +323,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   figaro
   fog
+  fog-aws
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
