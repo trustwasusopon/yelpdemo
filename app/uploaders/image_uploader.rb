@@ -7,7 +7,7 @@ process resize_to_fit: [400,400]
 
   # Choose what kind of storage to use for this uploader:
 if Rails.env.production?
-  storage :fog
+  storage :aws
 else
   storage :file
 end
