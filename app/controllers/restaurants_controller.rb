@@ -79,8 +79,8 @@ class RestaurantsController < ApplicationController
     def check_user
       unless current_user.admin?
         redirect_to root_url, alert: "Sorry, only admins can do that"
+      end
     end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def restaurant_params
       params.require(:restaurant).permit(:name, :address, :phone, :website, :image)
