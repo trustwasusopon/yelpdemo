@@ -1,24 +1,30 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :check_user, except: [:index, :show]
+  before_action :authenticate_user!, except: [:search, :index, :show]
+  before_action :check_user, except: [:search, :index, :show]
   # GET /restaurants
   # GET /restaurants.json
   def index
     @restaurants = Restaurant.all
   end
 
+  def search
+    if params[:search].present?
+      @restaurants = Restaurant.search(params[:search])
+    else
+      @restaurants = Restaurant.all
+    end
+  end
+
   # GET /restaurants/1
   # GET /restaurants/1.json
   def show
     @reviews = Review.where(restaurant_id: @restaurant.id).order("created_at DESC")
-
-  if @reviews.blank?
-    @avg_rating = 0
-  else
-    @avg_rating = @reviews.average(:rating).round(2)
-  end
-
+    if @reviews.blank?
+      @avg_rating = 0
+    else
+      @avg_rating = @reviews.average(:rating).round(2)
+    end
   end
 
   # GET /restaurants/new

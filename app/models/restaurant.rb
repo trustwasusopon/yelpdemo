@@ -15,4 +15,6 @@ class Restaurant < ApplicationRecord
   validates :address, format: { with: /\A\d+[^,]+,[^,]+, [A-Z]{2} \d{5}\z/,
       message: "must be in the format of 350 Fifth Avenue, New York, NY 10118" }
 
+  searchkick
+
 end
